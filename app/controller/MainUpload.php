@@ -172,7 +172,6 @@ class MainUpload {
 
             $savename = Filesystem::disk('public')->putFile('course_video', $file);
             return success(["videoPath" => self::$UPLOAD_PATH.$savename]);
-        
             
         } catch(\think\exception\ValidateException $e){
             echo $e->getMessage();
