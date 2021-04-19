@@ -8,6 +8,8 @@ use think\response\Redirect;
 
 class MainUpload {
 
+    public static $UPLOAD_PATH = 'http://assets.yoga.com/storage/';
+
     public function fetchUEConfig() {
         /* 前后端通信相关的配置,注释只允许使用多行方式 */
         $callBack = Request::param('callback');
@@ -40,7 +42,7 @@ class MainUpload {
             ]])->check(['file' => $file]);
 
             $savename = Filesystem::disk('public')->putFile('course', $file, 'md5');
-            return success(["imagePath" => "http://source.yogaguanjia.com/storage/".$savename]);
+            return success(["imagePath" => self::$UPLOAD_PATH.$savename]);
             
             
         } catch(\think\exception\ValidateException $e){
@@ -66,7 +68,7 @@ class MainUpload {
             ]])->check(['file' => $file]);
 
             $savename = Filesystem::disk('public')->putFile('tuanke', $file, 'md5');
-            return success(["imagePath" => "http://source.yogaguanjia.com/storage/".$savename]);
+            return success(["imagePath" => self::$UPLOAD_PATH.$savename]);
             
             
         } catch(\think\exception\ValidateException $e){
@@ -92,7 +94,7 @@ class MainUpload {
             ]])->check(['file' => $file]);
 
             $savename = Filesystem::disk('public')->putFile('banke', $file, 'md5');
-            return success(["imagePath" => "http://source.yogaguanjia.com/storage/".$savename]);
+            return success(["imagePath" => self::$UPLOAD_PATH.$savename]);
             
         } catch(\think\exception\ValidateException $e){
             echo $e->getMessage();
@@ -117,7 +119,7 @@ class MainUpload {
             ]])->check(['file' => $file]);
 
             $savename = Filesystem::disk('public')->putFile('teacher', $file, 'md5');
-            return success(["imagePath" => "http://source.yogaguanjia.com/storage/".$savename]);
+            return success(["imagePath" => self::$UPLOAD_PATH.$savename]);
             
             
         } catch(\think\exception\ValidateException $e){
@@ -143,7 +145,7 @@ class MainUpload {
             ]])->check(['file' => $file]);
 
             $savename = Filesystem::disk('public')->putFile('teacher_card', $file, 'md5');
-            return success(["imagePath" => "http://source.yogaguanjia.com/storage/".$savename]);
+            return success(["imagePath" => self::$UPLOAD_PATH.$savename]);
             
             
         } catch(\think\exception\ValidateException $e){
@@ -169,7 +171,7 @@ class MainUpload {
         
 
             $savename = Filesystem::disk('public')->putFile('course_video', $file);
-            return success(["videoPath" => "http://source.yogaguanjia.com/storage/".$savename]);
+            return success(["videoPath" => self::$UPLOAD_PATH.$savename]);
         
             
         } catch(\think\exception\ValidateException $e){
@@ -212,7 +214,7 @@ class MainUpload {
 
                 $return_json = json_encode([
                     "state"=>"SUCCESS",
-                    "url"=> "http://source.yogaguanjia.com/storage/".$savename,
+                    "url"=> self::$UPLOAD_PATH.$savename,
                     "title" => $originalFileName,
                     "size"=> $fileSize,
                     "type"=> $originalFileType,
