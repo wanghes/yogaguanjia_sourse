@@ -24,6 +24,30 @@ class MainUpload {
         return "";
     }
 
+    public function focus(){
+        // 获取表单上传文件
+        try {
+            $file = Request::file('file');
+            if (null === $file) {
+                // 异常代码使用UPLOAD_ERR_NO_FILE常量，方便需要进一步处理异常时使用
+                throw new \Exception('请上传文件', UPLOAD_ERR_NO_FILE);
+            }   
+
+            validate(['file' => [
+                // 限制文件大小(单位b)，这里限制为50M
+                'fileSize' => 50 * 1024 * 1024,
+                // 限制文件后缀，多个后缀以英文逗号分割
+                'fileExt'  => 'gif,jpg,png'
+            ]])->check(['file' => $file]);
+
+            $savename = Filesystem::disk('public')->putFile('focus', $file, 'md5');
+            return success(["imagePath" => self::$UPLOAD_PATH.$savename]);
+            
+            
+        } catch(\think\exception\ValidateException $e){
+            echo $e->getMessage();
+        }   
+    }
 
     public function upload(){
         // 获取表单上传文件
@@ -49,6 +73,57 @@ class MainUpload {
             echo $e->getMessage();
         }   
     }
+
+    public function uploadFlashSaleCover()
+    {
+        // 获取表单上传文件
+        try {
+            $file = Request::file('file');
+            if (null === $file) {
+                // 异常代码使用UPLOAD_ERR_NO_FILE常量，方便需要进一步处理异常时使用
+                throw new \Exception('请上传文件', UPLOAD_ERR_NO_FILE);
+            }   
+
+            validate(['file' => [
+                // 限制文件大小(单位b)，这里限制为50M
+                'fileSize' => 50 * 1024 * 1024,
+                // 限制文件后缀，多个后缀以英文逗号分割
+                'fileExt'  => 'gif,jpg,png'
+            ]])->check(['file' => $file]);
+
+            $savename = Filesystem::disk('public')->putFile('flash_sale_cover', $file, 'md5');
+            return success(["imagePath" => self::$UPLOAD_PATH.$savename]);
+            
+        } catch(\think\exception\ValidateException $e){
+            echo $e->getMessage();
+        }   
+    }
+
+    public function uploadGroupPurchaseCover() 
+    {
+        // 获取表单上传文件
+        try {
+            $file = Request::file('file');
+            if (null === $file) {
+                // 异常代码使用UPLOAD_ERR_NO_FILE常量，方便需要进一步处理异常时使用
+                throw new \Exception('请上传文件', UPLOAD_ERR_NO_FILE);
+            }   
+
+            validate(['file' => [
+                // 限制文件大小(单位b)，这里限制为50M
+                'fileSize' => 50 * 1024 * 1024,
+                // 限制文件后缀，多个后缀以英文逗号分割
+                'fileExt'  => 'gif,jpg,png'
+            ]])->check(['file' => $file]);
+
+            $savename = Filesystem::disk('public')->putFile('group_purchase_cover', $file, 'md5');
+            return success(["imagePath" => self::$UPLOAD_PATH.$savename]);
+            
+        } catch(\think\exception\ValidateException $e){
+            echo $e->getMessage();
+        }   
+    }
+
 
     public function uploadVenues()
     {
