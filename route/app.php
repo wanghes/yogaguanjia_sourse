@@ -19,6 +19,12 @@ Route::post('/upload/upload_tuanke_cover', 'MainUpload/uploadTuanke');
 Route::post('/upload/upload_banke_cover', 'MainUpload/uploadBanke');
 Route::post('/upload/teacher_head', 'MainUpload/teacherHead');
 Route::post('/upload/teacher_id_card', 'MainUpload/teacherIdCard');
+Route::post('/upload/upload_flash_sale_cover', 'MainUpload/uploadFlashSaleCover');
+Route::post('/upload/upload_group_purchase_cover', 'MainUpload/uploadGroupPurchaseCover');
+Route::post('/upload/focus', 'MainUpload/focus');
+
+// 上传场馆主的主题图片
+Route::post('/upload/venues', 'MainUpload/uploadVenues');
 
 // 视频上传
 Route::post('/course/upload_video', 'MainUpload/uploadVideo');
