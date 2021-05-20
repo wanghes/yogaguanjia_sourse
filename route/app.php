@@ -22,6 +22,7 @@ Route::post('/upload/teacher_id_card', 'MainUpload/teacherIdCard');
 Route::post('/upload/upload_flash_sale_cover', 'MainUpload/uploadFlashSaleCover');
 Route::post('/upload/upload_group_purchase_cover', 'MainUpload/uploadGroupPurchaseCover');
 Route::post('/upload/focus', 'MainUpload/focus');
+Route::post('/upload/card_cover', 'MainUpload/uploadCardCover');
 
 // 上传场馆主的主题图片
 Route::post('/upload/venues', 'MainUpload/uploadVenues');
