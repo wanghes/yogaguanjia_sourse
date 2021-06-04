@@ -29,6 +29,8 @@ Route::post('/upload/venues', 'MainUpload/uploadVenues');
 
 // 视频上传
 Route::post('/course/upload_video', 'MainUpload/uploadVideo');
+// 用户自己上传用户头像
+Route::post('/upload/member_head', 'MainUpload/userHead');
 
 // 针对UEditor的文件上传 主要还是图片
 Route::get('upload/ue_upload', 'MainUpload/uploadContentImg');
