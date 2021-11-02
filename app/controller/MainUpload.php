@@ -8,7 +8,8 @@ use think\response\Redirect;
 
 class MainUpload {
 
-    public static $UPLOAD_PATH = 'http://assets.yoga.com/storage/';
+    public static $UPLOAD_PATH = 'http://source.yogaguanjia.com/storage/';
+   // public static $UPLOAD_PATH = 'http://assets.yoga.com/storage/';
 
     public function fetchUEConfig() {
         /* 前后端通信相关的配置,注释只允许使用多行方式 */
@@ -64,7 +65,7 @@ class MainUpload {
                 // 限制文件大小(单位b)，这里限制为50M
                 'fileSize' => 50 * 1024 * 1024,
                 // 限制文件后缀，多个后缀以英文逗号分割
-                'fileExt'  => 'gif,jpg,png'
+                'fileExt'  => 'gif,jpg,jpeg,png'
             ]])->check(['file' => $file]);
 
             $savename = Filesystem::disk('public')->putFile('focus', $file, 'md5');
@@ -91,7 +92,7 @@ class MainUpload {
                 // 限制文件大小(单位b)，这里限制为50M
                 'fileSize' => 50 * 1024 * 1024,
                 // 限制文件后缀，多个后缀以英文逗号分割
-                'fileExt'  => 'gif,jpg,png'
+                'fileExt'  => 'gif,jpg.jpeg,png'
             ]])->check(['file' => $file]);
 
             $savename = Filesystem::disk('public')->putFile('card_cover', $file, 'md5');
@@ -116,7 +117,7 @@ class MainUpload {
                 // 限制文件大小(单位b)，这里限制为50M
                 'fileSize' => 50 * 1024 * 1024,
                 // 限制文件后缀，多个后缀以英文逗号分割
-                'fileExt'  => 'gif,jpg,png'
+                'fileExt'  => 'gif,jpg,jpeg,png'
             ]])->check(['file' => $file]);
 
             $savename = Filesystem::disk('public')->putFile('course', $file, 'md5');
@@ -142,7 +143,7 @@ class MainUpload {
                 // 限制文件大小(单位b)，这里限制为50M
                 'fileSize' => 50 * 1024 * 1024,
                 // 限制文件后缀，多个后缀以英文逗号分割
-                'fileExt'  => 'gif,jpg,png'
+                'fileExt'  => 'gif,jpg,jpeg,png'
             ]])->check(['file' => $file]);
 
             $savename = Filesystem::disk('public')->putFile('flash_sale_cover', $file, 'md5');
@@ -167,7 +168,7 @@ class MainUpload {
                 // 限制文件大小(单位b)，这里限制为50M
                 'fileSize' => 50 * 1024 * 1024,
                 // 限制文件后缀，多个后缀以英文逗号分割
-                'fileExt'  => 'gif,jpg,png'
+                'fileExt'  => 'gif,jpg,jpeg,png'
             ]])->check(['file' => $file]);
 
             $savename = Filesystem::disk('public')->putFile('group_purchase_cover', $file, 'md5');
@@ -193,7 +194,7 @@ class MainUpload {
                 // 限制文件大小(单位b)，这里限制为50M
                 'fileSize' => 50 * 1024 * 1024,
                 // 限制文件后缀，多个后缀以英文逗号分割
-                'fileExt'  => 'gif,jpg,png'
+                'fileExt'  => 'gif,jpg,jpeg,png'
             ]])->check(['file' => $file]);
 
             $savename = Filesystem::disk('public')->putFile('venues', $file, 'md5');
@@ -218,7 +219,7 @@ class MainUpload {
                 // 限制文件大小(单位b)，这里限制为50M
                 'fileSize' => 50 * 1024 * 1024,
                 // 限制文件后缀，多个后缀以英文逗号分割
-                'fileExt'  => 'gif,jpg,png'
+                'fileExt'  => 'gif,jpg,jpeg,png'
             ]])->check(['file' => $file]);
 
             $savename = Filesystem::disk('public')->putFile('tuanke', $file, 'md5');
@@ -244,7 +245,7 @@ class MainUpload {
                 // 限制文件大小(单位b)，这里限制为50M
                 'fileSize' => 50 * 1024 * 1024,
                 // 限制文件后缀，多个后缀以英文逗号分割
-                'fileExt'  => 'gif,jpg,png'
+                'fileExt'  => 'gif,jpg,jpeg,png'
             ]])->check(['file' => $file]);
 
             $savename = Filesystem::disk('public')->putFile('banke', $file, 'md5');
@@ -269,7 +270,7 @@ class MainUpload {
                 // 限制文件大小(单位b)，这里限制为50M
                 'fileSize' => 50 * 1024 * 1024,
                 // 限制文件后缀，多个后缀以英文逗号分割
-                'fileExt'  => 'gif,jpg,png'
+                'fileExt'  => 'gif,jpg,jpeg,png'
             ]])->check(['file' => $file]);
 
             $savename = Filesystem::disk('public')->putFile('teacher', $file, 'md5');
@@ -295,7 +296,7 @@ class MainUpload {
                 // 限制文件大小(单位b)，这里限制为50M
                 'fileSize' => 50 * 1024 * 1024,
                 // 限制文件后缀，多个后缀以英文逗号分割
-                'fileExt'  => 'gif,jpg,png'
+                'fileExt'  => 'gif,jpg,jpeg,png'
             ]])->check(['file' => $file]);
 
             $savename = Filesystem::disk('public')->putFile('teacher_card', $file, 'md5');
@@ -308,7 +309,6 @@ class MainUpload {
     }
 
     public function uploadVideo() {
-        
         try {
             $file = Request::file('video');
             if (null === $file) {
@@ -318,7 +318,7 @@ class MainUpload {
 
             validate(['video' => [
                 // 限制文件大小(单位b)，这里限制为50M
-                'fileSize' => 50 * 1024 * 1024,
+                'fileSize' => 500 * 1024 * 1024,
                 // 限制文件后缀，多个后缀以英文逗号分割
                 // 'fileExt'  => 'gif,jpg,png'
             ]])->check(['video' => $file]);
