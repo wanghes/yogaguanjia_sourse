@@ -8,8 +8,8 @@ use think\response\Redirect;
 
 class MainUpload {
 
-    // public static $UPLOAD_PATH = 'http://source.yogaguanjia.com/storage/';
-   public static $UPLOAD_PATH = 'http://assets.yoga.com/storage/';
+   public static $UPLOAD_PATH = 'http://source.yogaguanjia.com/storage/';
+   // public static $UPLOAD_PATH = 'http://assets.yoga.com/storage/';
 
    /**
 	 * 英文转为中文
@@ -273,7 +273,7 @@ class MainUpload {
             return success(null, '上传失败:'.self::_languageChange($e->getMessage()), 500);
         }   
     }
-    
+
     public function teacherHead()
     {
         // 获取表单上传文件
