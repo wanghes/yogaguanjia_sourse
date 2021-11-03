@@ -53,6 +53,26 @@ class ExceptionHandle extends Handle
         // 添加自定义异常处理机制
 
         // 其他错误交给系统处理
-        return parent::render($request, $e);
+        // return parent::render($request, $e);
+
+        if (method_exists($e, "getCode")) {
+            $httpStatus = $e->getCode();
+        } else {
+            $httpStatus = $this->httpStatus;
+        }
+
+        if (env('APP_DEBUG') == 1) {   
+            return json([
+                'code' => $httpStatus, 
+                'msg'=> '系统异常，联系开发查看日志', 
+                'error' => $e->getMessage()
+            ]);
+        }
+
+        return json([
+            'code' => $httpStatus, 
+            'error'=> $e->getMessage(), 
+            'msg' => "系统异常，联系开发查看日志"
+        ]);
     }
 }
